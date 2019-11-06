@@ -1,11 +1,7 @@
 import React from 'react';
 
 const Photo = (props) => {
-    return (
-        <div className="photoContainer">
-            <img src={props.imgUrl} className="photo" alt="NASA daily post" />
-        </div>
-    )
+    return <img src={props.imgUrl} alt={props.title} className="photo" />
 }
 
 export default Photo;
