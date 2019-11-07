@@ -4,20 +4,29 @@ import Description from './description.js';
 import Title from "./title.js";
 import Date from "./date.js";
 import Photo from "./photo.js";
+import styled from 'styled-components';
+
+
+
+
 
 const PhotoFrame = () => {
-    const [imgUrl, setImgUrl] = useState([]);
-    const [title, setTitle] = useState([]);
-    const [description, setDescription] = useState([]);
-    const [date, setDate] = useState([]);
+    const [obj, setObjData] = useState([]);
+    const StyledPhotoFrame = styled.div`
+    margin: 5% auto;
+    padding: 2% 5% 2% 5%;
+    background-image: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+    border-radius: 15px;
+`
+    const HeaderFrame = styled.div`
+        font-size: 2rem;
+    `
 
     useEffect(() => {
         axios.get("https://api.nasa.gov/planetary/apod?api_key=JTwOGmJQqrXvarntcnGb294JxmW5q6ar61jW0kD5")
         .then(response => {
-            setImgUrl(response.data.url);
-            setTitle(response.data.title);
-            setDescription(response.data.explanation);
-            setDate(response.data.date);
+            setObjData(response.data);
+            console.log(response.data);
         })
         .catch(error => {
             console.log(error);
@@ -26,13 +35,16 @@ const PhotoFrame = () => {
 
 
     return (
-        <div className="container">
-            <Title title={title} />
-            <Date date={date} />
-            <Photo imgUrl={imgUrl} title={title} />
-            <Description description={description} />
-        </div>
+        <StyledPhotoFrame className="container">
+            <HeaderFrame>
+                <Title title={obj.title} />
+                <Date date={obj.date} />
+            </HeaderFrame>
+            <Photo imgUrl={obj.url} title={obj.title} />
+            <Description description={obj.explanation} />
+        </StyledPhotoFrame>
     )
 }
+
 
 export default PhotoFrame;
