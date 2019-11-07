@@ -9,7 +9,10 @@ const ImgFrame = styled.div`
     box-shadow: 0 0 8px 2px $shadow-;
 `
 
+
+
 const Photo = (props) => {
+
     return <ImgFrame className="photoframe">
                <img src={props.imgUrl} alt={props.title} style={{position: 'relative', top: '-50%', left: '-7.5%'}}/>
 

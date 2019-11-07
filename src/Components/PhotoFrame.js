@@ -8,10 +8,9 @@ import styled from 'styled-components';
 
 
 
-
-
 const PhotoFrame = () => {
     const [obj, setObjData] = useState([]);
+
     const StyledPhotoFrame = styled.div`
     margin: 5% auto;
     padding: 2% 5% 2% 5%;
